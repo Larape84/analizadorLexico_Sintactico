@@ -1,0 +1,261 @@
+[
+
+    {
+        "nombre": "hola",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+
+    {
+        "nombre": "funtion",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    
+    {
+        "nombre": "var",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "const",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "let",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "switch",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "case",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "if",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "else",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "for",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "while",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "parseFloat",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "break",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "textContent",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "innerHTML",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "document",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "getElementById",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "return",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "continue",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "try",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "catch",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "console",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "log",
+        "tipo": "reservada",
+        "codigo":"100"
+    },
+    {
+        "nombre": "0",
+        "tipo": "numero",
+        "codigo":"102"
+    },
+    {
+        "nombre": "1",
+        "tipo": "numero",
+        "codigo":"102"
+    },
+    {
+        "nombre": "2",
+        "tipo": "numero",
+        "codigo":"102"
+    },
+    {
+        "nombre": "3",
+        "tipo": "numero",
+        "codigo":"102"
+    },
+    {
+        "nombre": "4",
+        "tipo": "numero",
+        "codigo":"102"
+    },
+    {
+        "nombre": "6",
+        "tipo": "numero",
+        "codigo":"102"
+    },
+    {
+        "nombre": "7",
+        "tipo": "numero",
+        "codigo":"102"
+    },
+    {
+        "nombre": "8",
+        "tipo": "numero",
+        "codigo":"102"
+    },
+    {
+        "nombre": "9",
+        "tipo": "numero",
+        "codigo":"102"
+    },
+    {
+        "nombre": "(",
+        "tipo": "simbolo",
+        "codigo":"1"
+    },
+    {
+        "nombre": ")",
+        "tipo": "simbolo",
+        "codigo":"2"
+    },
+    {
+        "nombre": "{",
+        "tipo": "simbolo",
+        "codigo":"6"
+    },
+    {
+        "nombre": "=",
+        "tipo": "simbolo",
+        "codigo":"8"
+    },
+    {
+        "nombre": "==",
+        "tipo": "simbolo",
+        "codigo":"8"
+    },
+    {
+        "nombre": ">=",
+        "tipo": "simbolo",
+        "codigo":"8"
+    },
+    {
+        "nombre": "<=",
+        "tipo": "simbolo",
+        "codigo":"8"
+    },
+    {
+        "nombre": "!=",
+        "tipo": "simbolo",
+        "codigo":"8"
+    },
+    {
+        "nombre": "!==",
+        "tipo": "simbolo",
+        "codigo":"8"
+    },
+    {
+        "nombre": ";",
+        "tipo": "simbolo",
+        "codigo":"5"
+    },
+    {
+        "nombre": ":",
+        "tipo": "simbolo",
+        "codigo":"4"
+    },
+    {
+        "nombre": "}",
+        "tipo": "simbolo",
+        "codigo":"7"
+    },
+    {
+        "nombre": ".",
+        "tipo": "simbolo",
+        "codigo":"3"
+    },
+    {
+        "nombre": "+",
+        "tipo": "operador",
+        "codigo":"103"
+    },
+    {
+        "nombre": "-",
+        "tipo": "operador",
+        "codigo":"103"
+    },
+    {
+        "nombre": "*",
+        "tipo": "operador",
+        "codigo":"103"
+    },
+    {
+        "nombre": "/",
+        "tipo": "operador",
+        "codigo":"103"
+    },
+    {
+        "nombre": "%",
+        "tipo": "operador",
+        "codigo":"103"
+    },
+	{
+        "nombre": "pudin",
+        "tipo": "reservada",
+        "codigo":"100"
+    }
+    
+]

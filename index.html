@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- fonts google -->
+    <!-- Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon" />
+    <title>Analizador Lexico-Sintactico</title>
+  </head>
+  <body>
+    <div class="container_formulario">
+      <div class="container_form">
+          <h1 class="h4">Analizador Sintactico Lexico de JavaScript leo</h1>
+          <form id="container_codigo">
+            <textarea
+              class="text-body-1"
+              name="entrada"
+              placeholder=""
+              id="codigo"
+              cols="30"
+              rows="10"
+            ></textarea>
+            <div class="group-buttons">
+              <button type="submit" id="btn-compilar">Compilar</button>
+              <button type="reset">Limpiar</button>
+            </div>
+          </form>
+      </div>
+      <div class="container_lexico">
+        <h4>Analizador Lexico</h4>
+        <div id="aLexico">
+          <table>
+            <thead>
+              <tr>
+                <th class="h6">nombre</th>
+                <th class="h6">tipo</th>
+                <th class="h6">codigo</th>
+              </tr>
+            </thead>
+            <tbody id="datos"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="container_sintactico">
+        <h4>Analizador Sintactico</h4>
+        <div id="aSintactico"></div>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
