@@ -8,7 +8,7 @@ let tokens = [];
 
 lexemas=[
 
-  {
+  { 
       "nombre": "grant",
       "tipo": "reservada",
       "codigo":"100"
