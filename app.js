@@ -9,7 +9,7 @@ let tokens = [];
 lexemas=[
 
   {
-      "nombre": "grant",
+      "nombre": "grant 123",
       "tipo": "reservada",
       "codigo":"100"
   },
