@@ -13,6 +13,11 @@ lexemas=[
       "tipo": "reservada",
       "codigo":"100"
   },
+  {
+    "nombre": "on",
+    "tipo": "reservada",
+    "codigo":"100"
+},
   
   {
       "nombre": "var",
