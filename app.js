@@ -324,6 +324,27 @@ function buscar(listaDePalabras) {
   })
 }
 
+function dividirPalabras(cadenas){
+    /* recorremos las lineas */
+    cadenas.forEach((cadena)=>{
+      /* en cada linea separamos los simbolos*/
+      cadena = cadena.replace(';',' ;');
+      cadena = cadena.replace('=',' =');
+      cadena = cadena.replace('+',' +');
+      cadena = cadena.replace('.',' . ');
+      cadena = cadena.replace('(',' ( ');
+      cadena = cadena.replace(')',' ) ');
+  /*     console.log(cadena) */
+    /* separamos cada linea por los espacios */
+    let listaDePalabras = cadena.split(/\s/g);
+    /*     console.log(listaDePalabras); */
+    /* buscamos cada parabra */
+    buscar(listaDePalabras);
+    });
+  }
+
+
+
 /*  funcion que compara las palabras no encontradas*/
 function comprobarPalabraNoEncontrada(palabra){
 /*   console.log('No se encontro',palabra); */
@@ -346,12 +367,7 @@ function comprobarPalabraNoEncontrada(palabra){
   return temp;
 }
 
-/* funcion que divide el texto en bloque de codigo */
-function dividirBloque(cadenas){
-  let bloques = cadenas.split(';\n')
-  console.log(bloques);
-  return bloques;
-}
+
 /* funcion que separa los casos */
 function comprobarCaso(bloques){
   let respuestas = [];
@@ -385,6 +401,7 @@ function comprobarCaso(bloques){
     `;
   })
 }
+
 /* funcion que divide el texto en lineas */
 function dividirLineas(cadenas){
   let listDeCadenas = cadenas.split(/\n/g);
@@ -392,24 +409,7 @@ function dividirLineas(cadenas){
   return listDeCadenas;
 }
 /* funcion que divide el texto en palabras y luego las busca en la bd lexemas */
-function dividirPalabras(cadenas){
-  /* recorremos las lineas */
-  cadenas.forEach((cadena)=>{
-    /* en cada linea separamos los simbolos*/
-    cadena = cadena.replace(';',' ;');
-    cadena = cadena.replace('=',' =');
-    cadena = cadena.replace('+',' +');
-    cadena = cadena.replace('.',' . ');
-    cadena = cadena.replace('(',' ( ');
-    cadena = cadena.replace(')',' ) ');
-/*     console.log(cadena) */
-  /* separamos cada linea por los espacios */
-  let listaDePalabras = cadena.split(/\s/g);
-  /*     console.log(listaDePalabras); */
-  /* buscamos cada parabra */
-  buscar(listaDePalabras);
-  });
-}
+
 /* agregando la accion al form */
 cCodigo.addEventListener('submit', event=>{
   event.preventDefault();
