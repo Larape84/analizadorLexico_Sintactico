@@ -8,13 +8,8 @@ let tokens = [];
 
 lexemas=[
 
-<<<<<<< HEAD
   {
       "nombre": "grant 123",
-=======
-  { 
-      "nombre": "grant",
->>>>>>> db3392eb4a2c678bf058aae643bea2385f93e61e
       "tipo": "reservada",
       "codigo":"100"
   },
