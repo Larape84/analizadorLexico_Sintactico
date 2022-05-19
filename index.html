@@ -173,7 +173,9 @@ let tokens = [];
         if (index > -1) {
           sintaxis.splice(index, 1);
       }
+
     
+      
 
 
   n=0;
@@ -183,8 +185,12 @@ let tokens = [];
     const $cuerpoTabla2 = document.querySelector("#cuerpoTabla2");
     
     sintaxis.forEach(arreglosintaxis => {
-      
-      if (sintaxis[n]!=undefined && sintaxis[n]!='' && sintaxis[n]!=';' && sintaxis[n]!=""){
+
+      sintaxis[n] = sintaxis[n].replaceAll('\n',' ');
+      sintaxis[n] = sintaxis[n].replaceAll(/\s+/gm,' ');
+      sintaxis[n] = sintaxis[n].trim();
+
+      if (sintaxis[n]!=undefined && sintaxis[n]!='' && sintaxis[n]!=';' && sintaxis[n]!="" && sintaxis[n]!='  ') {
       const $tr = document.createElement("tr");
      
       let $vuelta = document.createElement("td");
@@ -201,7 +207,9 @@ let tokens = [];
       $tr.appendChild($selectorOperacion);
   
       
-      $cuerpoTabla2.appendChild($tr);}
+      $cuerpoTabla2.appendChild($tr);
+        //console.log(sintaxis);
+    }
       n++;
   
       });
