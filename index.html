@@ -1,60 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <!-- fonts google -->
-    <!-- Roboto -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon" />
-    <title>Analizador Lexico-Sintactico</title>
-  </head>
-  <body>
-    <div class="container_formulario">
-      <div class="container_form">
-          <h1 class="h4">Analizador Sintactico Lexico de JavaScript leo</h1>
-          <form id="container_codigo">
-            <textarea
-              class="text-body-1"
-              name="entrada"
-              placeholder=""
-              id="codigo"
-              cols="30"
-              rows="10"
-            ></textarea>
-            <div class="group-buttons">
-              <button type="submit" id="btn-compilar">Compilar</button>
-              <button type="reset">Limpiar</button>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Analizador Lexico y Sintactico</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+</head>
+<body>
+    <div class="container" style="max-width: 800px;">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <div align="center" ><img src="./img/logo.png" width="158" height="160" ></div>
+        <div class="text-center" style="margin: 20px 0px 20px 0px;">
+            <a href="" target="_blank">Analizador Lexico y Sintactico</a><br>
+            <span class="text-secondary">sintaxis para las variables GRANT y REVOKE SQL</span>
+            <br>
+            <span class="text-secondary col-mb-6">Introduzca el codigo a analizar</span>
+            <textarea class="form-control" id="inputcodigo" name="inputcodigo" rows="5" type="text" onKeyUp="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()"></textarea>
             </div>
-          </form>
+
+            <button type="button" class="btn btn-primary" onclick="analizar()">Analizar</button>
+            <button type="button" class="btn btn-danger" onclick="borrar()">Borrar</button>
+            <button onclick="modal()" type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal1">Ver Ejemplo de Sintaxis</button>
+
+
+
+
+            <br><br>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal1" name="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <div class="container_lexico">
-        <h4>Analizador Lexico</h4>
-        <div id="aLexico">
-          <table>
-            <thead>
-              <tr>
-                <th class="h6">nombre</th>
-                <th class="h6">tipo</th>
-                <th class="h6">codigo</th>
-              </tr>
-            </thead>
-            <tbody id="datos"></tbody>
-          </table>
-        </div>
+      <div class="modal-body">
+        ...
       </div>
-      <div class="container_sintactico">
-        <h4>Analizador Sintactico</h4>
-        <div id="aSintactico"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
-    <script src="./app.js"></script>
-  </body>
+  </div>
+</div>
+
+
+
+<div  id="ocultarLexico" name="ocultarLexico" style="display: none;">
+            <div class="container_lexico">
+                <h4>Analizador Lexico</h4>
+                <div id="aLexico">
+                  <table class="table table-bordered">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th class="h6" scope="col">nro</th>
+                        <th class="h6" scope="col">nombre</th>
+                        <th class="h6"scope="col">tipo</th>
+                        <th class="h6"scope="col">codigo</th>
+                      </tr>
+                    </thead>
+                    <tbody id="cuerpoTabla"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+<script type="text/javascript">
+
+function borrar(){
+
+  document.querySelectorAll("table tbody tr").forEach(function(e){e.remove()})
+  document.getElementById("inputcodigo").value="";
+  $('#ocultarLexico').css('display', 'none');
+  $('#ocularSintactico').css('display', 'none');
+
+}
+
+function analizar(){
+
+if (document.getElementById("inputcodigo").value==""){
+  alert ("Por favor ingresar instruccion(es)");
+  return;
+}
+  
+document.querySelectorAll("table tbody tr").forEach(function(e){e.remove()})
+
+    $('#ocultarLexico').css('display', 'block');
+    $('#ocularSintactico').css('display', 'block');
+
+
+let Analizadorlexico =[];
+
+Analizadorlexico = document.getElementById("inputcodigo").value;
+
+let lexemas;
+let tokens = [];
+
+      /* en cada linea separamos los simbolos*/
+      Analizadorlexico = Analizadorlexico.replaceAll(';',' ; ');
+      Analizadorlexico = Analizadorlexico.replaceAll('=',' = ');
+      Analizadorlexico = Analizadorlexico.replaceAll('+',' + ');
+      Analizadorlexico = Analizadorlexico.replaceAll('(',' ( ');
+      Analizadorlexico = Analizadorlexico.replaceAll(')',' ) ');
+      Analizadorlexico = Analizadorlexico.replaceAll('>=',' >= ');
+      Analizadorlexico = Analizadorlexico.replaceAll('<=',' <= ');
+      Analizadorlexico = Analizadorlexico.replaceAll('==',' == ');
+      Analizadorlexico = Analizadorlexico.replaceAll('===',' === ');
+      Analizadorlexico = Analizadorlexico.replaceAll('<',' < ');
+      Analizadorlexico = Analizadorlexico.replaceAll('>',' > ');
+      Analizadorlexico = Analizadorlexico.replaceAll(';',' ; ');
+
+      
+
+    
+    /* separamos cada linea por los espacios */
+    let listaDePalabras = [];
+     listaDePalabras = Analizadorlexico.split(/\s+/gm);
+     var index = listaDePalabras.indexOf("");
+        if (index > -1) {
+          listaDePalabras.splice(index, 1);
+      }
+
+
+    /* buscamos cada parabra */
+  
+
+
+  n=0;
+  nointeracciones=[];
+  t=1;
+
+  const $cuerpoTabla = document.querySelector("#cuerpoTabla");
+    
+  listaDePalabras.forEach(listaDePalabra => {
+    if (listaDePalabra!=undefined && listaDePalabra!=''){
+    const $tr = document.createElement("tr");
+   
+    let $vuelta = document.createElement("td");
+    $vuelta.textContent = t; 
+    $tr.appendChild($vuelta);
+    t++;
+    
+    let $nombreconjunto1 = document.createElement("td");
+    $nombreconjunto1.textContent = "";
+    $tr.appendChild($nombreconjunto1);
+    
+    let $selectorOperacion = document.createElement("td");
+    $selectorOperacion.textContent = listaDePalabras[n];
+    $tr.appendChild($selectorOperacion);
+
+    let $nombreconjunto2 = document.createElement("td");
+    $nombreconjunto2.textContent = "";
+    $tr.appendChild($nombreconjunto2);
+    n++;
+    $cuerpoTabla.appendChild($tr);}
+
+    });
+
+
+
+
+    let sintaxis = [];
+    sintaxis = Analizadorlexico.split(/(;)+/gm);
+     var index = sintaxis.indexOf('');
+        if (index > -1) {
+          sintaxis.splice(index, 1);
+      }
+    
+
+
+  n=0;
+  nointeracciones=[];
+  t=1;
+
+    const $cuerpoTabla2 = document.querySelector("#cuerpoTabla2");
+    
+    sintaxis.forEach(arreglosintaxis => {
+      
+      if (sintaxis[n]!=undefined && sintaxis[n]!='' && sintaxis[n]!=';' && sintaxis[n]!=""){
+      const $tr = document.createElement("tr");
+     
+      let $vuelta = document.createElement("td");
+      $vuelta.textContent = t; 
+      $tr.appendChild($vuelta);
+      t++;
+      
+      let $nombreconjunto1 = document.createElement("td");
+      $nombreconjunto1.textContent = sintaxis[n];
+      $tr.appendChild($nombreconjunto1);
+      
+      let $selectorOperacion = document.createElement("td");
+      $selectorOperacion.textContent = "";
+      $tr.appendChild($selectorOperacion);
+  
+      
+      $cuerpoTabla2.appendChild($tr);}
+      n++;
+  
+      });
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+</script>
+
+
+
+<br>
+<div id="ocularSintactico" name="ocularSintactico" style="display: none;"> 
+<div class="container_Sintactico">
+  <h4>Analizador Sintactico</h4>
+  <div id="aLexico">
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th class="h6 col-2" scope="col">Instruccion</th>
+          <th class="h6 col-6" scope="col">Sintaxis</th>
+          <th class="h6 col-4"scope="col">Manejador Error</th>
+        </tr>
+      </thead>
+      <tbody id="cuerpoTabla2"></tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+
+
+
+</body>
 </html>
