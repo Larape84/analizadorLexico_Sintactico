@@ -46,7 +46,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        
+        <p>instrucciones SQl para las sentencias GRANT y REVOKE</p> 
 
 
 
@@ -89,7 +89,7 @@
 function insertar(){
 
 document.querySelectorAll("table tbody tr").forEach(function(e){e.remove()})
-document.getElementById("inputcodigo").value="hola";
+document.getElementById("inputcodigo").value="REVOKE READ_WRITE ON MiEsquema1;\nGRANT EXECUTE ON dbo.uspGetBillOfMaterials TO newrole;";
 $('#ocultarLexico').css('display', 'none');
 $('#ocularSintactico').css('display', 'none');
 document.querySelector("#staticBackdrop > div > div > div.modal-footer > button.btn.btn-secondary").click();
@@ -532,8 +532,9 @@ let tokens = [];
       $nombreconjunto1.textContent = sintaxis[n];
       $tr.appendChild($nombreconjunto1);
       
+      
   var m = sintaxis[n];
-  var expreg = new RegExp("(GRANT)");
+  var expreg = new RegExp(/(REVOKE READ_WRITE ON MiEsquema1)|(GRANT EXECUTE ON dbo.uspGetBillOfMaterials TO newrole)/gmi);
   
   if(expreg.test(m)){
     resultado2='sintaxis correcta'}
