@@ -6,8 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Analizador Lexico y Sintactico</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+   
+
+
 </head>
 <body>
     <div class="container" style="max-width: 800px;">
@@ -24,33 +32,37 @@
 
             <button type="button" class="btn btn-primary" onclick="analizar()">Analizar</button>
             <button type="button" class="btn btn-danger" onclick="borrar()">Borrar</button>
-            <button onclick="modal()" type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal1">Ver Ejemplo de Sintaxis</button>
-
-
-
-
-            <br><br>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              Ver ejemplos de Sintaxis
+            </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal1" name="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title" id="staticBackdropLabel">Sintasis GRANT y REVOKE SQL</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        
+
+
+
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-success" onclick="insertar()">Insertar Ejemplos</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
       </div>
     </div>
   </div>
 </div>
+
+            <br><br>
+
 
 
 
@@ -74,6 +86,283 @@
             </div>
 <script type="text/javascript">
 
+function insertar(){
+
+document.querySelectorAll("table tbody tr").forEach(function(e){e.remove()})
+document.getElementById("inputcodigo").value="hola";
+$('#ocultarLexico').css('display', 'none');
+$('#ocularSintactico').css('display', 'none');
+document.querySelector("#staticBackdrop > div > div > div.modal-footer > button.btn.btn-secondary").click();
+}
+
+
+let lexemas;
+lexemas=[
+
+  {
+      "nombre": "IF",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+    "nombre": "ON",
+    "tipo": "reservada",
+    "codigo":"100"
+},
+  
+  {
+      "nombre": "VAR",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "CONST",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "LET",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "SWITCH",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "CASE",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "IF",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "ELSE",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "FOR",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "WHILE",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "PARSEFLOAT",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "BREAK",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "TEXTCONTENT",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "INNERHTML",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "DOCUMENT",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "getElementById",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "RETURN",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "CONTINUE",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "TRY",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "CATCH",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "CONSOLE",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "LOG",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": 0,
+      "tipo": "numero",
+      "codigo":"102"
+  },
+  {
+      "nombre": 1,
+      "tipo": "numero",
+      "codigo":"102"
+  },
+  {
+      "nombre": 2,
+      "tipo": "numero",
+      "codigo":"102"
+  },
+  {
+      "nombre": 3,
+      "tipo": "numero",
+      "codigo":"102"
+  },
+  {
+      "nombre": 4,
+      "tipo": "numero",
+      "codigo":"102"
+  },
+  {
+      "nombre": 5,
+      "tipo": "numero",
+      "codigo":"102"
+  },
+  {
+      "nombre": 6,
+      "tipo": "numero",
+      "codigo":"102"
+  },
+  {
+      "nombre": 7,
+      "tipo": "numero",
+      "codigo":"102"
+  },
+  {
+      "nombre": 8,
+      "tipo": "numero",
+      "codigo":"102"
+  },
+  {
+      "nombre": 9,
+      "tipo": "numero",
+      "codigo":"102"
+  },
+  {
+      "nombre": "(",
+      "tipo": "simbolo",
+      "codigo":"103"
+  },
+  {
+      "nombre": ")",
+      "tipo": "simbolo",
+      "codigo":"103"
+  },
+  {
+      "nombre": "{",
+      "tipo": "simbolo",
+      "codigo":"103"
+  },
+  {
+      "nombre": "=",
+      "tipo": "simbolo",
+      "codigo":"103"
+  },
+  {
+      "nombre": "==",
+      "tipo": "simbolo",
+      "codigo":"103"
+  },
+  {
+      "nombre": "===",
+      "tipo": "simbolo",
+      "codigo":"103"
+  },
+  {
+      "nombre": ">=",
+      "tipo": "simbolo",
+      "codigo":"103"
+  },
+  {
+      "nombre": "<=",
+      "tipo": "simbolo",
+      "codigo":"103"
+  },
+  {
+      "nombre": "!=",
+      "tipo": "simbolo",
+      "codigo":"103"
+  },
+  {
+      "nombre": "!==",
+      "tipo": "simbolo",
+      "codigo":"103"
+  },
+  {
+      "nombre": ";",
+      "tipo": "simbolo",
+      "codigo":"103"
+  },
+  {
+      "nombre": ":",
+      "tipo": "simbolo",
+      "codigo":"103"
+  },
+  {
+      "nombre": "}",
+      "tipo": "simbolo",
+      "codigo":"103"
+  },
+  {
+      "nombre": ".",
+      "tipo": "simbolo",
+      "codigo":"103"
+  },
+  {
+      "nombre": "+",
+      "tipo": "operador",
+      "codigo":"104"
+  },
+  {
+      "nombre": "-",
+      "tipo": "operador",
+      "codigo":"104"
+  },
+  {
+      "nombre": "*",
+      "tipo": "operador",
+      "codigo":"104"
+  },
+  {
+      "nombre": "/",
+      "tipo": "operador",
+      "codigo":"104"
+  },
+  {
+      "nombre": "%",
+      "tipo": "operador",
+      "codigo":"104"
+  }
+  
+];
+
 function borrar(){
 
   document.querySelectorAll("table tbody tr").forEach(function(e){e.remove()})
@@ -89,6 +378,14 @@ if (document.getElementById("inputcodigo").value==""){
   alert ("Por favor ingresar instruccion(es)");
   return;
 }
+
+const str = document.getElementById("inputcodigo").value;
+
+
+if (str.includes(';')==false){
+  alert ("Por favor debe separar cada instruccion mediante simbolo ( ; )");
+  return;
+}
   
 document.querySelectorAll("table tbody tr").forEach(function(e){e.remove()})
 
@@ -100,19 +397,21 @@ let Analizadorlexico =[];
 
 Analizadorlexico = document.getElementById("inputcodigo").value;
 
-let lexemas;
+
 let tokens = [];
 
       /* en cada linea separamos los simbolos*/
+      Analizadorlexico = Analizadorlexico.trim();
       Analizadorlexico = Analizadorlexico.replaceAll(';',' ; ');
-      Analizadorlexico = Analizadorlexico.replaceAll('=',' = ');
       Analizadorlexico = Analizadorlexico.replaceAll('+',' + ');
       Analizadorlexico = Analizadorlexico.replaceAll('(',' ( ');
       Analizadorlexico = Analizadorlexico.replaceAll(')',' ) ');
       Analizadorlexico = Analizadorlexico.replaceAll('>=',' >= ');
       Analizadorlexico = Analizadorlexico.replaceAll('<=',' <= ');
-      Analizadorlexico = Analizadorlexico.replaceAll('==',' == ');
-      Analizadorlexico = Analizadorlexico.replaceAll('===',' === ');
+      Analizadorlexico = Analizadorlexico.replaceAll('=',' = ');
+      Analizadorlexico = Analizadorlexico.replaceAll(' =  = ',' == ');
+      Analizadorlexico = Analizadorlexico.replaceAll(' ==  = ',' === ');
+      
       Analizadorlexico = Analizadorlexico.replaceAll('<',' < ');
       Analizadorlexico = Analizadorlexico.replaceAll('>',' > ');
       Analizadorlexico = Analizadorlexico.replaceAll(';',' ; ');
@@ -129,13 +428,14 @@ let tokens = [];
       }
 
 
-    /* buscamos cada parabra */
-  
-
-
   n=0;
   nointeracciones=[];
   t=1;
+  let resultado="";
+  let resultadoCodigo="";
+
+  
+  
 
   const $cuerpoTabla = document.querySelector("#cuerpoTabla");
     
@@ -149,18 +449,47 @@ let tokens = [];
     t++;
     
     let $nombreconjunto1 = document.createElement("td");
-    $nombreconjunto1.textContent = "";
+    $nombreconjunto1.textContent = listaDePalabras[n];
     $tr.appendChild($nombreconjunto1);
     
+
+    lexemas.forEach(object =>{
+      console.log(object.nombre);
+      console.log(listaDePalabras[n]);
+
+    if(object.nombre == listaDePalabras[n]){
+        resultado= object.tipo;
+        resultadoCodigo= object.codigo;
+        //alert (resultado);
+    }
+    });
+
+    if(parseInt(listaDePalabras[n])>1 ||parseInt(listaDePalabras[n])<=1){
+        resultado= 'numero';
+        resultadoCodigo= '102';
+        //alert (resultado);
+    };
+
+    if(resultado==''){
+        resultado= 'identificador';
+        resultadoCodigo= '101';
+        //alert (resultado);
+    };
+
     let $selectorOperacion = document.createElement("td");
-    $selectorOperacion.textContent = listaDePalabras[n];
+    $selectorOperacion.textContent = resultado;
     $tr.appendChild($selectorOperacion);
+   
+   
 
     let $nombreconjunto2 = document.createElement("td");
-    $nombreconjunto2.textContent = "";
+    $nombreconjunto2.textContent = resultadoCodigo;
     $tr.appendChild($nombreconjunto2);
     n++;
     $cuerpoTabla.appendChild($tr);}
+
+    resultado="";
+    resultadoCodigo="";
 
     });
 
@@ -181,6 +510,7 @@ let tokens = [];
   n=0;
   nointeracciones=[];
   t=1;
+  let resultado2="";
 
     const $cuerpoTabla2 = document.querySelector("#cuerpoTabla2");
     
@@ -202,12 +532,21 @@ let tokens = [];
       $nombreconjunto1.textContent = sintaxis[n];
       $tr.appendChild($nombreconjunto1);
       
+  var m = sintaxis[n];
+  var expreg = new RegExp("(GRANT)");
+  
+  if(expreg.test(m)){
+    resultado2='sintaxis correcta'}
+  else{  resultado2='sintaxis no reconocida'}
+
       let $selectorOperacion = document.createElement("td");
-      $selectorOperacion.textContent = "";
+      $selectorOperacion.textContent =resultado2;
       $tr.appendChild($selectorOperacion);
   
       
       $cuerpoTabla2.appendChild($tr);
+
+      resultado2="";
         //console.log(sintaxis);
     }
       n++;

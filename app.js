@@ -297,6 +297,7 @@ function buscar(listaDePalabras) {
       console.log('es un estring vacio')
       ;
   });
+  
   tokens.push(subTokens);
   console.log(tokens);
   lexico.innerHTML=``;
