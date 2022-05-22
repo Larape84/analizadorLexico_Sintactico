@@ -13,8 +13,18 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
-   
+    <Style type = "text/css">
 
+.my-custom-scrollbar  {
+position: relative;
+height: 300px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+}
+
+</Style>
 
 </head>
 <body>
@@ -27,7 +37,7 @@
             <span class="text-secondary">sintaxis para las variables GRANT y REVOKE SQL</span>
             <br>
             <span class="text-secondary col-mb-6">Introduzca el codigo a analizar</span>
-            <textarea class="form-control" id="inputcodigo" name="inputcodigo" rows="5" type="text" onKeyUp="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()"></textarea>
+            <textarea class="form-control" id="inputcodigo" name="inputcodigo" rows="5" type="text"></textarea>
             </div>
 
             <button type="button" class="btn btn-primary" onclick="analizar()">Analizar</button>
@@ -69,9 +79,9 @@
 <div  id="ocultarLexico" name="ocultarLexico" style="display: none;">
             <div class="container_lexico">
                 <h4>Analizador Lexico</h4>
-                <div id="aLexico">
-                  <table class="table table-bordered">
-                    <thead class="thead-dark">
+                <div id="aLexico" class="table-wrapper-scroll-y my-custom-scrollbar" >
+                  <table class="table table-bordered table-striped mb-0">
+                    <thead class="thead-dark" style="position: sticky;top: 0" >
                       <tr>
                         <th class="h6" scope="col">nro</th>
                         <th class="h6" scope="col">nombre</th>
@@ -84,12 +94,18 @@
                 </div>
               </div>
             </div>
+
+
+
+
 <script type="text/javascript">
+
+
 
 function insertar(){
 
 document.querySelectorAll("table tbody tr").forEach(function(e){e.remove()})
-document.getElementById("inputcodigo").value="REVOKE READ_WRITE ON MiEsquema1;\nGRANT EXECUTE ON dbo.uspGetBillOfMaterials TO newrole;";
+document.getElementById("inputcodigo").value="REVOKE READ_WRITE ON MiEsquema1;\nGRANT EXECUTE ON dbo.uspGetBillOfMaterials TO newrole;\nGRANT SELECT ON OBJECT :: eddas ( exel ) TO leonardo;\nGRANT UPDATE ON TABLE TABLA1 TO USER1 , USER2 , USER3 , USER5 WITH GRANT OPTION;\nGRANT INSERT ON ORDER_BACKLOG TO PUBLIC WITH GRANT OPTION;\nGRANT ALL PRIVILEGES TO TABLA WITH GRANT OPTION;\nGRANT DELETE ON TABLE TABLA1 TO USER1;\nGRANT SELECT ON TABLE Q.PLANTILLA TO PUBLIC AT ALL LOCATIONS;\nGRANT READ , WRITE ON VARIABLE MYSCHEMA.MYJOB_PRINTER TO ZUBIRI;\nREVOKE SELECT ON USUARIOS FROM ASMITH;\nREVOKE SELECT ON TABLE SMITH.TABLEA FROM BAKER BY ALL;\nREVOKE ALL PRIVILEGES ON USUARIOS FROM ASMITH;\nREVOKE ALL PRIVILEGES ON USUARIOS FROM PUBLIC;\nREVOKE SELECT ON TABLE EMPLOYEE FROM ENGLES;\nREVOKE UPDATE ON EMPLOYEE FROM PUBLIC;\nREVOKE ALL ON EMPLOYEE FROM USER PELLOW , USER MLI , USER LEO , GROUP PLANNERS;\nREVOKE SELECT ON CORPDATA.EMPLOYEE FROM JOHN;\nREVOKE SELECT ON CORPDATA.EMPLOYEE FROM USER JOHN;\nREVOKE SELECT ON CORPDATA.EMPLOYEE FROM JOHN;\nREVOKE SELECT ON CORPDATA.EMPLOYEE FROM GROUP JOHN;\nREVOKE INDEX ON ORAREM1 FROM USER SHAWN";
 $('#ocultarLexico').css('display', 'none');
 $('#ocularSintactico').css('display', 'none');
 document.querySelector("#staticBackdrop > div > div > div.modal-footer > button.btn.btn-secondary").click();
@@ -100,12 +116,43 @@ let lexemas;
 lexemas=[
 
   {
-      "nombre": "IF",
+      "nombre": "REVOKE",
       "tipo": "reservada",
       "codigo":"100"
   },
   {
+      "nombre": "ROLE",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "SCHEMA",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "GRANT",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "SELECT",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+  {
+      "nombre": "TO",
+      "tipo": "reservada",
+      "codigo":"100"
+  },
+
+  {
     "nombre": "ON",
+    "tipo": "reservada",
+    "codigo":"100"
+},
+{
+    "nombre": "::",
     "tipo": "reservada",
     "codigo":"100"
 },
@@ -383,6 +430,7 @@ if (document.getElementById("inputcodigo").value==""){
 const str = document.getElementById("inputcodigo").value;
 
 
+
 if (str.includes(';')==false){
   alert ("Por favor debe separar cada instruccion mediante simbolo ( ; )");
   return;
@@ -416,6 +464,8 @@ let tokens = [];
       Analizadorlexico = Analizadorlexico.replaceAll('<',' < ');
       Analizadorlexico = Analizadorlexico.replaceAll('>',' > ');
       Analizadorlexico = Analizadorlexico.replaceAll(';',' ; ');
+      Analizadorlexico = Analizadorlexico.replaceAll('::',' :: ');
+      Analizadorlexico = Analizadorlexico.replaceAll(',',' , ');
 
       
 
@@ -455,10 +505,10 @@ let tokens = [];
     
 
     lexemas.forEach(object =>{
-      console.log(object.nombre);
-      console.log(listaDePalabras[n]);
+      //console.log(object.nombre);
+      //console.log(listaDePalabras[n]);
 
-    if(object.nombre == listaDePalabras[n]){
+    if(object.nombre == listaDePalabras[n].toUpperCase()){
         resultado= object.tipo;
         resultadoCodigo= object.codigo;
         //alert (resultado);
@@ -517,6 +567,7 @@ let tokens = [];
     
     sintaxis.forEach(arreglosintaxis => {
 
+      resultado2="Sintaxis NO reconocida";
       sintaxis[n] = sintaxis[n].replaceAll('\n',' ');
       sintaxis[n] = sintaxis[n].replaceAll(/\s+/gm,' ');
       sintaxis[n] = sintaxis[n].trim();
@@ -534,12 +585,48 @@ let tokens = [];
       $tr.appendChild($nombreconjunto1);
       
       
-  var m = sintaxis[n];
-  var expreg = new RegExp(/(REVOKE READ_WRITE ON MiEsquema1)|(GRANT EXECUTE ON dbo.uspGetBillOfMaterials TO newrole)/gmi);
-  
-  if(expreg.test(m)){
-    resultado2='sintaxis correcta'}
-  else{  resultado2='sintaxis no reconocida'}
+      
+
+
+const regex = /((GRANT (SELECT|UPDATE|DELETE|INSERT) ON OBJECT :: ([A-Za-z0-9._$-]+) [(] ([A-Za-z0-9._$-]+) [)]( TO )([A-Za-z0-9._$-]+))$|(GRANT EXECUTE ON ([A-Za-z0-9._$-]+)( TO )([A-Za-z0-9._$-]+))$|(REVOKE READ_WRITE ON ([A-Za-z0-9._$-]+))$|(GRANT (SELECT|UPDATE|DELETE|INSERT) ON TABLE ([A-Za-z0-9._$-]+)( TO )([A-Za-z0-9._$-]+)(( , )([A-Za-z0-9._$-]+))*( WITH GRANT OPTION)*( AT ALL LOCATIONS)*)$|(GRANT (SELECT|UPDATE|DELETE|INSERT) ON ([A-Za-z0-9._$-]+) TO ([A-Za-z0-9._$-]+)([A-Za-z0-9._$-]+)(( , )([A-Za-z0-9._$-]+))* (WITH GRANT OPTION)*)$|(GRANT ALL PRIVILEGES TO ([A-Za-z0-9._$-]+)( WITH GRANT OPTION)*)$|(GRANT ON TABLE TO ([A-Za-z0-9._$-]+)( WITH GRANT OPTION)*)|(GRANT (((READ)|WRITE)|(READ , WRITE)) ON VARIABLE ([A-Za-z0-9._$-]+) TO ([A-Za-z0-9._$-]+))$|(REVOKE (SELECT|UPDATE|DELETE|INSERT|INDEX) ON( TABLE)* ([A-Za-z0-9._$-]+) FROM( USER| GROUP)* ([A-Za-z0-9._$-]+)( BY ALL)*)$|(REVOKE ALL PRIVILEGES ON ([A-Za-z0-9._$-]+) FROM ([A-Za-z0-9._$-]+))$|(REVOKE ALL ON ([A-Za-z0-9._$-]+) FROM USER ([A-Za-z0-9._$-]+)((( , ))USER ([A-Za-z0-9._$-]+))*( , GROUP ([A-Za-z0-9._$-]+))*))$/gismd
+
+
+
+const str1 = sintaxis[n];
+let m;
+
+
+
+
+
+while ((m = regex.exec(str1)) !== null) {
+    // This is necessary to avoid infinite loops with zero-width matches
+    if (m.index === regex.lastIndex) {
+        regex.lastIndex++;
+    }
+    
+    // The result can be accessed through the `m`-variable.
+    m.forEach((match, groupIndex) => {
+        console.log(`Found match, group ${groupIndex}: ${match}`);
+
+        if (match!=undefined){
+            resultado2='sintaxis correcta'
+        }
+    });
+}
+
+
+
+
+    
+    
+    
+    
+   
+
+
+
+   
 
       let $selectorOperacion = document.createElement("td");
       $selectorOperacion.textContent =resultado2;
@@ -548,7 +635,7 @@ let tokens = [];
       
       $cuerpoTabla2.appendChild($tr);
 
-      resultado2="";
+      
         //console.log(sintaxis);
     }
       n++;
@@ -576,9 +663,9 @@ let tokens = [];
 <div id="ocularSintactico" name="ocularSintactico" style="display: none;"> 
 <div class="container_Sintactico">
   <h4>Analizador Sintactico</h4>
-  <div id="aLexico">
-    <table class="table table-bordered">
-      <thead class="thead-dark">
+  <div id="aSintactico" class="table-wrapper-scroll-y my-custom-scrollbar">
+    <table class="table table-bordered table-striped mb-0">
+      <thead class="thead-dark" style="position: sticky;top: 0" >
         <tr>
           <th class="h6 col-2" scope="col">Instruccion</th>
           <th class="h6 col-6" scope="col">Sintaxis</th>
