@@ -59,10 +59,16 @@ display: block;
       </div>
       <div class="modal-body">
         <p>instrucciones SQl para las sentencias GRANT y REVOKE</p> 
-
-
-
-
+        <span class="text-secondary">  
+          Las sentencias GRANT y REVOKE permiten a los administradores del sistema crear cuentas de usuario SQL y conceder y revocar derechos de esas cuentas
+        </span> <br><br>
+        <span class="text-secondary">  
+          Puede utilizar la sentencia GRANT de SQL para otorgar privilegios SQL SELECT, UPDATE, INSERT, DELETE y otros en tablas o vistas, la cláusula WITH GRANT OPTION indica que JONES puede otorgar a otros
+        </span> 
+        <br><br>
+        <span class="text-secondary"> 
+          El comando REVOKE permite revocar privilegios de un usuario o un grupo o revocar la capacidad de un usuario o un grupo de conceder privilegios a otros usuarios.
+        </span>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success" onclick="insertar()">Insertar Ejemplos</button>
@@ -89,54 +95,36 @@ display: block;
               </svg>
               
         
-      
-             
-        
-              <div class="alert alert-success d-flex align-items-center" role="alert" id="compilaBien" name="compilaBien" style="display: none;">
+              
+        <div id="compilaBien" name="compilaBien" style="display: none;">
+              <div class="alert alert-success d-flex align-items-center" role="alert" >
                 <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
                 <div>
-                  An example success alert with an icon
+                  La sintaxis compila correctamente
                 </div>
               </div>
+            </div>
         
-        
-              <div class="alert alert-warning d-flex align-items-center" role="alert" id="compilaconError" name="compilaconError" style="display: none;">
+              <div id="compilaconError" name="compilaconError" style="display: none;">
+              <div class="alert alert-warning d-flex align-items-center" role="alert">
                 <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
                 <div>
-                  An example warning alert with an icon
+                  La sintaxis compila con Error
                 </div>
               </div>
+            </div>
         
-        
-        
-              <div class="alert alert-danger d-flex align-items-center" id="noCompila" role="alert" id="NoCompila" name="NoCompila" style="display: none;">
+              <div id="NoCompila" name="NoCompila" style="display: none;">
+              <div class="alert alert-danger d-flex align-items-center" role="alert" >
                 <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
                 <div>
-                  An example danger alert with an icon
+                  Error en la sintaxis NO compila
                 </div>
               </div>
-
+            </div>
             
 
 <div  id="ocultarLexico" name="ocultarLexico" style="display: none;">
-
-
-    
-
-
-
-      
-
-
-
-
-
-
-
-
-
-
-
 
             <div class="container_lexico">
                 <h4>Analizador Lexico</h4>
@@ -156,19 +144,13 @@ display: block;
               </div>
             </div>
 
-
-
-
 <script type="text/javascript">
-
-
-
 
 
 function insertar(){
 
 document.querySelectorAll("table tbody tr").forEach(function(e){e.remove()})
-document.getElementById("inputcodigo").value="REVOKE READ_WRITE ON MiEsquema1;\nGRANT EXECUTE ON dbo.uspGetBillOfMaterials TO newrole;\nGRANT SELECT ON OBJECT :: eddas ( exel ) TO leonardo;\nGRANT UPDATE ON TABLE TABLA1 TO USER1 , USER2 , USER3 , USER5 WITH GRANT OPTION;\nGRANT INSERT ON ORDER_BACKLOG TO PUBLIC WITH GRANT OPTION;\nGRANT ALL PRIVILEGES TO TABLA WITH GRANT OPTION;\nGRANT DELETE ON TABLE TABLA1 TO USER1;\nGRANT SELECT ON TABLE Q.PLANTILLA TO PUBLIC AT ALL LOCATIONS;\nGRANT READ , WRITE ON VARIABLE MYSCHEMA.MYJOB_PRINTER TO ZUBIRI;\nREVOKE SELECT ON USUARIOS FROM ASMITH;\nREVOKE SELECT ON TABLE SMITH.TABLEA FROM BAKER BY ALL;\nREVOKE ALL PRIVILEGES ON USUARIOS FROM ASMITH;\nREVOKE ALL PRIVILEGES ON USUARIOS FROM PUBLIC;\nREVOKE SELECT ON TABLE EMPLOYEE FROM ENGLES;\nREVOKE UPDATE ON EMPLOYEE FROM PUBLIC;\nREVOKE ALL ON EMPLOYEE FROM USER PELLOW , USER MLI , USER LEO , GROUP PLANNERS;\nREVOKE SELECT ON CORPDATA.EMPLOYEE FROM JOHN;\nREVOKE SELECT ON CORPDATA.EMPLOYEE FROM USER JOHN;\nREVOKE SELECT ON CORPDATA.EMPLOYEE FROM JOHN;\nREVOKE SELECT ON CORPDATA.EMPLOYEE FROM GROUP JOHN;\nREVOKE INDEX ON ORAREM1 FROM USER SHAWN";
+document.getElementById("inputcodigo").value="REVOKE READ_WRITE ON MiEsquema1;\nGRANT EXECUTE ON dbo.uspGetBillOfMaterials TO newrole;\nGRANT SELECT ON OBJECT :: eddas ( exel ) TO leonardo;\nREVOKE SELECT ON CORPDATA.EMPLOYEE FROM JOHN;\nREVOKE SELECT ON CORPDATA.EMPLOYEE FROM GROUP JOHN;\nREVOKE INDEX ON ORAREM1 FROM USER SHAWN";
 $('#ocultarLexico').css('display', 'none');
 $('#ocularSintactico').css('display', 'none');
 document.querySelector("#staticBackdrop > div > div > div.modal-footer > button.btn.btn-secondary").click();
@@ -469,8 +451,531 @@ lexemas=[
       "nombre": "%",
       "tipo": "operador",
       "codigo":"104"
-  }
-  
+  },{"nombre":"ADD","tipo":"reservada","codigo":"100"},
+,{"nombre":"EXTERNAL","tipo":"reservada","codigo":"100"},
+,{"nombre":"PROCEDURE","tipo":"reservada","codigo":"100"},
+,{"nombre":"ALL","tipo":"reservada","codigo":"100"},
+,{"nombre":"FETCH","tipo":"reservada","codigo":"100"},
+,{"nombre":"PUBLIC","tipo":"reservada","codigo":"100"},
+,{"nombre":"ALTER","tipo":"reservada","codigo":"100"},
+,{"nombre":"FILE","tipo":"reservada","codigo":"100"},
+,{"nombre":"RAISERROR","tipo":"reservada","codigo":"100"},
+,{"nombre":"y","tipo":"reservada","codigo":"100"},
+,{"nombre":"FILLFACTOR","tipo":"reservada","codigo":"100"},
+,{"nombre":"READ","tipo":"reservada","codigo":"100"},
+,{"nombre":"ANY","tipo":"reservada","codigo":"100"},
+,{"nombre":"FOR","tipo":"reservada","codigo":"100"},
+,{"nombre":"READTEXT","tipo":"reservada","codigo":"100"},
+,{"nombre":"AS","tipo":"reservada","codigo":"100"},
+,{"nombre":"FOREIGN","tipo":"reservada","codigo":"100"},
+,{"nombre":"RECONFIGURE","tipo":"reservada","codigo":"100"},
+,{"nombre":"ASC","tipo":"reservada","codigo":"100"},
+,{"nombre":"FREETEXT","tipo":"reservada","codigo":"100"},
+,{"nombre":"REFERENCES","tipo":"reservada","codigo":"100"},
+,{"nombre":"AUTHORIZATION","tipo":"reservada","codigo":"100"},
+,{"nombre":"FREETEXTTABLE","tipo":"reservada","codigo":"100"},
+,{"nombre":"REPLICACIÓN","tipo":"reservada","codigo":"100"},
+,{"nombre":"BACKUP","tipo":"reservada","codigo":"100"},
+,{"nombre":"FROM","tipo":"reservada","codigo":"100"},
+,{"nombre":"RESTORE","tipo":"reservada","codigo":"100"},
+,{"nombre":"BEGIN","tipo":"reservada","codigo":"100"},
+,{"nombre":"FULL","tipo":"reservada","codigo":"100"},
+,{"nombre":"RESTRICT","tipo":"reservada","codigo":"100"},
+,{"nombre":"BETWEEN","tipo":"reservada","codigo":"100"},
+,{"nombre":"FUNCTION","tipo":"reservada","codigo":"100"},
+,{"nombre":"RETURN","tipo":"reservada","codigo":"100"},
+,{"nombre":"BREAK","tipo":"reservada","codigo":"100"},
+,{"nombre":"GOTO","tipo":"reservada","codigo":"100"},
+,{"nombre":"REVERT","tipo":"reservada","codigo":"100"},
+,{"nombre":"BROWSE","tipo":"reservada","codigo":"100"},
+,{"nombre":"GRANT","tipo":"reservada","codigo":"100"},
+,{"nombre":"REVOKE","tipo":"reservada","codigo":"100"},
+,{"nombre":"BULK","tipo":"reservada","codigo":"100"},
+,{"nombre":"GROUP","tipo":"reservada","codigo":"100"},
+,{"nombre":"RIGHT","tipo":"reservada","codigo":"100"},
+,{"nombre":"BY","tipo":"reservada","codigo":"100"},
+,{"nombre":"HAVING","tipo":"reservada","codigo":"100"},
+,{"nombre":"ROLLBACK","tipo":"reservada","codigo":"100"},
+,{"nombre":"CASCADE","tipo":"reservada","codigo":"100"},
+,{"nombre":"HOLDLOCK","tipo":"reservada","codigo":"100"},
+,{"nombre":"ROWCOUNT","tipo":"reservada","codigo":"100"},
+,{"nombre":"CASE","tipo":"reservada","codigo":"100"},
+,{"nombre":"IDENTITY","tipo":"reservada","codigo":"100"},
+,{"nombre":"ROWGUIDCOL","tipo":"reservada","codigo":"100"},
+,{"nombre":"CHECK","tipo":"reservada","codigo":"100"},
+,{"nombre":"IDENTITY_INSERT","tipo":"reservada","codigo":"100"},
+,{"nombre":"RULE","tipo":"reservada","codigo":"100"},
+,{"nombre":"CHECKPOINT","tipo":"reservada","codigo":"100"},
+,{"nombre":"IDENTITYCOL","tipo":"reservada","codigo":"100"},
+,{"nombre":"SAVE","tipo":"reservada","codigo":"100"},
+,{"nombre":"CLOSE","tipo":"reservada","codigo":"100"},
+,{"nombre":"IF","tipo":"reservada","codigo":"100"},
+,{"nombre":"SCHEMA","tipo":"reservada","codigo":"100"},
+,{"nombre":"CLUSTERED","tipo":"reservada","codigo":"100"},
+,{"nombre":"IN","tipo":"reservada","codigo":"100"},
+,{"nombre":"SECURITYAUDIT","tipo":"reservada","codigo":"100"},
+,{"nombre":"COALESCE","tipo":"reservada","codigo":"100"},
+,{"nombre":"INDEX","tipo":"reservada","codigo":"100"},
+,{"nombre":"SELECT","tipo":"reservada","codigo":"100"},
+,{"nombre":"COLLATE","tipo":"reservada","codigo":"100"},
+,{"nombre":"INNER","tipo":"reservada","codigo":"100"},
+,{"nombre":"SEMANTICKEYPHRASETABLE","tipo":"reservada","codigo":"100"},
+,{"nombre":"COLUMN","tipo":"reservada","codigo":"100"},
+,{"nombre":"INSERT","tipo":"reservada","codigo":"100"},
+,{"nombre":"SEMANTICSIMILARITYDETAILSTABLE","tipo":"reservada","codigo":"100"},
+,{"nombre":"COMMIT","tipo":"reservada","codigo":"100"},
+,{"nombre":"INTERSECT","tipo":"reservada","codigo":"100"},
+,{"nombre":"SEMANTICSIMILARITYTABLE","tipo":"reservada","codigo":"100"},
+,{"nombre":"COMPUTE","tipo":"reservada","codigo":"100"},
+,{"nombre":"INTO","tipo":"reservada","codigo":"100"},
+,{"nombre":"SESSION_USER","tipo":"reservada","codigo":"100"},
+,{"nombre":"CONSTRAINT","tipo":"reservada","codigo":"100"},
+,{"nombre":"IS","tipo":"reservada","codigo":"100"},
+,{"nombre":"SET","tipo":"reservada","codigo":"100"},
+,{"nombre":"CONTAINS","tipo":"reservada","codigo":"100"},
+,{"nombre":"JOIN","tipo":"reservada","codigo":"100"},
+,{"nombre":"SETUSER","tipo":"reservada","codigo":"100"},
+,{"nombre":"CONTAINSTABLE","tipo":"reservada","codigo":"100"},
+,{"nombre":"KEY","tipo":"reservada","codigo":"100"},
+,{"nombre":"SHUTDOWN","tipo":"reservada","codigo":"100"},
+,{"nombre":"CONTINUE","tipo":"reservada","codigo":"100"},
+,{"nombre":"KILL","tipo":"reservada","codigo":"100"},
+,{"nombre":"SOME","tipo":"reservada","codigo":"100"},
+,{"nombre":"CONVERT","tipo":"reservada","codigo":"100"},
+,{"nombre":"LEFT","tipo":"reservada","codigo":"100"},
+,{"nombre":"STATISTICS","tipo":"reservada","codigo":"100"},
+,{"nombre":"CREATE","tipo":"reservada","codigo":"100"},
+,{"nombre":"LIKE","tipo":"reservada","codigo":"100"},
+,{"nombre":"SYSTEM_USER","tipo":"reservada","codigo":"100"},
+,{"nombre":"CROSS","tipo":"reservada","codigo":"100"},
+,{"nombre":"LINENO","tipo":"reservada","codigo":"100"},
+,{"nombre":"TABLE","tipo":"reservada","codigo":"100"},
+,{"nombre":"CURRENT","tipo":"reservada","codigo":"100"},
+,{"nombre":"LOAD","tipo":"reservada","codigo":"100"},
+,{"nombre":"TABLESAMPLE","tipo":"reservada","codigo":"100"},
+,{"nombre":"CURRENT_DATE","tipo":"reservada","codigo":"100"},
+,{"nombre":"MERGE","tipo":"reservada","codigo":"100"},
+,{"nombre":"TEXTSIZE","tipo":"reservada","codigo":"100"},
+,{"nombre":"CURRENT_TIME","tipo":"reservada","codigo":"100"},
+,{"nombre":"NATIONAL","tipo":"reservada","codigo":"100"},
+,{"nombre":"THEN","tipo":"reservada","codigo":"100"},
+,{"nombre":"CURRENT_TIMESTAMP","tipo":"reservada","codigo":"100"},
+,{"nombre":"NOCHECK","tipo":"reservada","codigo":"100"},
+,{"nombre":"TO","tipo":"reservada","codigo":"100"},
+,{"nombre":"CURRENT_USER","tipo":"reservada","codigo":"100"},
+,{"nombre":"NONCLUSTERED","tipo":"reservada","codigo":"100"},
+,{"nombre":"TOP","tipo":"reservada","codigo":"100"},
+,{"nombre":"CURSOR","tipo":"reservada","codigo":"100"},
+,{"nombre":"NOT","tipo":"reservada","codigo":"100"},
+,{"nombre":"TRAN","tipo":"reservada","codigo":"100"},
+,{"nombre":"DATABASE","tipo":"reservada","codigo":"100"},
+,{"nombre":"NULL","tipo":"reservada","codigo":"100"},
+,{"nombre":"TRANSACTION","tipo":"reservada","codigo":"100"},
+,{"nombre":"DBCC","tipo":"reservada","codigo":"100"},
+,{"nombre":"NULLIF","tipo":"reservada","codigo":"100"},
+,{"nombre":"TRIGGER","tipo":"reservada","codigo":"100"},
+,{"nombre":"DEALLOCATE","tipo":"reservada","codigo":"100"},
+,{"nombre":"OF","tipo":"reservada","codigo":"100"},
+,{"nombre":"TRUNCATE","tipo":"reservada","codigo":"100"},
+,{"nombre":"DECLARE","tipo":"reservada","codigo":"100"},
+,{"nombre":"Apagado","tipo":"reservada","codigo":"100"},
+,{"nombre":"TRY_CONVERT","tipo":"reservada","codigo":"100"},
+,{"nombre":"DEFAULT","tipo":"reservada","codigo":"100"},
+,{"nombre":"OFFSETS","tipo":"reservada","codigo":"100"},
+,{"nombre":"TSEQUAL","tipo":"reservada","codigo":"100"},
+,{"nombre":"Delete","tipo":"reservada","codigo":"100"},
+,{"nombre":"ACTIVAR","tipo":"reservada","codigo":"100"},
+,{"nombre":"UNION","tipo":"reservada","codigo":"100"},
+,{"nombre":"DENEGAR","tipo":"reservada","codigo":"100"},
+,{"nombre":"OPEN","tipo":"reservada","codigo":"100"},
+,{"nombre":"UNIQUE","tipo":"reservada","codigo":"100"},
+,{"nombre":"DESC","tipo":"reservada","codigo":"100"},
+,{"nombre":"OPENDATASOURCE","tipo":"reservada","codigo":"100"},
+,{"nombre":"UNPIVOT","tipo":"reservada","codigo":"100"},
+,{"nombre":"DISK","tipo":"reservada","codigo":"100"},
+,{"nombre":"OPENQUERY","tipo":"reservada","codigo":"100"},
+,{"nombre":"UPDATE","tipo":"reservada","codigo":"100"},
+,{"nombre":"DISTINCT","tipo":"reservada","codigo":"100"},
+,{"nombre":"OPENROWSET","tipo":"reservada","codigo":"100"},
+,{"nombre":"UPDATETEXT","tipo":"reservada","codigo":"100"},
+,{"nombre":"DISTRIBUTED","tipo":"reservada","codigo":"100"},
+,{"nombre":"OPENXML","tipo":"reservada","codigo":"100"},
+,{"nombre":"USE","tipo":"reservada","codigo":"100"},
+,{"nombre":"DOUBLE","tipo":"reservada","codigo":"100"},
+,{"nombre":"OPTION","tipo":"reservada","codigo":"100"},
+,{"nombre":"USER","tipo":"reservada","codigo":"100"},
+,{"nombre":"DROP","tipo":"reservada","codigo":"100"},
+,{"nombre":"O BIEN","tipo":"reservada","codigo":"100"},
+,{"nombre":"VALUES","tipo":"reservada","codigo":"100"},
+,{"nombre":"DUMP","tipo":"reservada","codigo":"100"},
+,{"nombre":"ORDER","tipo":"reservada","codigo":"100"},
+,{"nombre":"VARYING","tipo":"reservada","codigo":"100"},
+,{"nombre":"ELSE","tipo":"reservada","codigo":"100"},
+,{"nombre":"OUTER","tipo":"reservada","codigo":"100"},
+,{"nombre":"VIEW","tipo":"reservada","codigo":"100"},
+,{"nombre":"FIN","tipo":"reservada","codigo":"100"},
+,{"nombre":"OVER","tipo":"reservada","codigo":"100"},
+,{"nombre":"WAITFOR","tipo":"reservada","codigo":"100"},
+,{"nombre":"ERRLVL","tipo":"reservada","codigo":"100"},
+,{"nombre":"PERCENT","tipo":"reservada","codigo":"100"},
+,{"nombre":"WHEN","tipo":"reservada","codigo":"100"},
+,{"nombre":"ESCAPE","tipo":"reservada","codigo":"100"},
+,{"nombre":"PIVOT","tipo":"reservada","codigo":"100"},
+,{"nombre":"WHERE","tipo":"reservada","codigo":"100"},
+,{"nombre":"EXCEPT","tipo":"reservada","codigo":"100"},
+,{"nombre":"PLAN","tipo":"reservada","codigo":"100"},
+,{"nombre":"WHILE","tipo":"reservada","codigo":"100"},
+,{"nombre":"EXEC","tipo":"reservada","codigo":"100"},
+,{"nombre":"PRECISION","tipo":"reservada","codigo":"100"},
+,{"nombre":"WITH","tipo":"reservada","codigo":"100"},
+,{"nombre":"Ejecute","tipo":"reservada","codigo":"100"},
+,{"nombre":"PRIMARY","tipo":"reservada","codigo":"100"},
+,{"nombre":"WITHIN GROUP","tipo":"reservada","codigo":"100"},
+,{"nombre":"EXISTS","tipo":"reservada","codigo":"100"},
+,{"nombre":"PRINT","tipo":"reservada","codigo":"100"},
+,{"nombre":"WRITETEXT","tipo":"reservada","codigo":"100"},
+,{"nombre":"EXIT","tipo":"reservada","codigo":"100"},
+,{"nombre":"PROC","tipo":"reservada","codigo":"100"}
+,{"nombre":"ADD","tipo":"reservada","codigo":"100"},
+,{"nombre":"ABSOLUTE","tipo":"reservada","codigo":"100"},
+,{"nombre":"EXEC","tipo":"reservada","codigo":"100"},
+,{"nombre":"OVERLAPS","tipo":"reservada","codigo":"100"},
+,{"nombre":"ACCIÓN","tipo":"reservada","codigo":"100"},
+,{"nombre":"EXECUTE","tipo":"reservada","codigo":"100"},
+,{"nombre":"PAD","tipo":"reservada","codigo":"100"},
+,{"nombre":"ADA","tipo":"reservada","codigo":"100"},
+,{"nombre":"EXISTS","tipo":"reservada","codigo":"100"},
+,{"nombre":"PARTIAL","tipo":"reservada","codigo":"100"},
+,{"nombre":"AGREGAR","tipo":"reservada","codigo":"100"},
+,{"nombre":"EXTERNAL","tipo":"reservada","codigo":"100"},
+,{"nombre":"PASCAL","tipo":"reservada","codigo":"100"},
+,{"nombre":"ALL","tipo":"reservada","codigo":"100"},
+,{"nombre":"EXTRACT","tipo":"reservada","codigo":"100"},
+,{"nombre":"POSITION","tipo":"reservada","codigo":"100"},
+,{"nombre":"ALLOCATE","tipo":"reservada","codigo":"100"},
+,{"nombre":"FALSE","tipo":"reservada","codigo":"100"},
+,{"nombre":"PRECISION","tipo":"reservada","codigo":"100"},
+,{"nombre":"ALTER","tipo":"reservada","codigo":"100"},
+,{"nombre":"FETCH","tipo":"reservada","codigo":"100"},
+,{"nombre":"PREPARE","tipo":"reservada","codigo":"100"},
+,{"nombre":"AND","tipo":"reservada","codigo":"100"},
+,{"nombre":"FIRST","tipo":"reservada","codigo":"100"},
+,{"nombre":"PRESERVE","tipo":"reservada","codigo":"100"},
+,{"nombre":"ANY","tipo":"reservada","codigo":"100"},
+,{"nombre":"FLOAT","tipo":"reservada","codigo":"100"},
+,{"nombre":"PRIMARY","tipo":"reservada","codigo":"100"},
+,{"nombre":"ARE","tipo":"reservada","codigo":"100"},
+,{"nombre":"FOR","tipo":"reservada","codigo":"100"},
+,{"nombre":"PRIOR","tipo":"reservada","codigo":"100"},
+,{"nombre":"AS","tipo":"reservada","codigo":"100"},
+,{"nombre":"FOREIGN","tipo":"reservada","codigo":"100"},
+,{"nombre":"PRIVILEGES","tipo":"reservada","codigo":"100"},
+,{"nombre":"ASC","tipo":"reservada","codigo":"100"},
+,{"nombre":"FORTRAN","tipo":"reservada","codigo":"100"},
+,{"nombre":"PROCEDURE","tipo":"reservada","codigo":"100"},
+,{"nombre":"ASSERTION","tipo":"reservada","codigo":"100"},
+,{"nombre":"FOUND","tipo":"reservada","codigo":"100"},
+,{"nombre":"PUBLIC","tipo":"reservada","codigo":"100"},
+,{"nombre":"AT","tipo":"reservada","codigo":"100"},
+,{"nombre":"FROM","tipo":"reservada","codigo":"100"},
+,{"nombre":"READ","tipo":"reservada","codigo":"100"},
+,{"nombre":"AUTHORIZATION","tipo":"reservada","codigo":"100"},
+,{"nombre":"FULL","tipo":"reservada","codigo":"100"},
+,{"nombre":"REAL","tipo":"reservada","codigo":"100"},
+,{"nombre":"AVG","tipo":"reservada","codigo":"100"},
+,{"nombre":"GET","tipo":"reservada","codigo":"100"},
+,{"nombre":"REFERENCES","tipo":"reservada","codigo":"100"},
+,{"nombre":"BEGIN","tipo":"reservada","codigo":"100"},
+,{"nombre":"GLOBAL","tipo":"reservada","codigo":"100"},
+,{"nombre":"RELATIVE","tipo":"reservada","codigo":"100"},
+,{"nombre":"BETWEEN","tipo":"reservada","codigo":"100"},
+,{"nombre":"GO","tipo":"reservada","codigo":"100"},
+,{"nombre":"RESTRICT","tipo":"reservada","codigo":"100"},
+,{"nombre":"BIT","tipo":"reservada","codigo":"100"},
+,{"nombre":"GOTO","tipo":"reservada","codigo":"100"},
+,{"nombre":"REVOKE","tipo":"reservada","codigo":"100"},
+,{"nombre":"BIT_LENGTH","tipo":"reservada","codigo":"100"},
+,{"nombre":"GRANT","tipo":"reservada","codigo":"100"},
+,{"nombre":"RIGHT","tipo":"reservada","codigo":"100"},
+,{"nombre":"BOTH","tipo":"reservada","codigo":"100"},
+,{"nombre":"GROUP","tipo":"reservada","codigo":"100"},
+,{"nombre":"ROLLBACK","tipo":"reservada","codigo":"100"},
+,{"nombre":"BY","tipo":"reservada","codigo":"100"},
+,{"nombre":"HAVING","tipo":"reservada","codigo":"100"},
+,{"nombre":"ROWS","tipo":"reservada","codigo":"100"},
+,{"nombre":"CASCADE","tipo":"reservada","codigo":"100"},
+,{"nombre":"HOUR","tipo":"reservada","codigo":"100"},
+,{"nombre":"SCHEMA","tipo":"reservada","codigo":"100"},
+,{"nombre":"CASCADED","tipo":"reservada","codigo":"100"},
+,{"nombre":"IDENTITY","tipo":"reservada","codigo":"100"},
+,{"nombre":"SCROLL","tipo":"reservada","codigo":"100"},
+,{"nombre":"CASE","tipo":"reservada","codigo":"100"},
+,{"nombre":"IMMEDIATE","tipo":"reservada","codigo":"100"},
+,{"nombre":"SECOND","tipo":"reservada","codigo":"100"},
+,{"nombre":"CAST","tipo":"reservada","codigo":"100"},
+,{"nombre":"IN","tipo":"reservada","codigo":"100"},
+,{"nombre":"SECTION","tipo":"reservada","codigo":"100"},
+,{"nombre":"CATALOG","tipo":"reservada","codigo":"100"},
+,{"nombre":"INCLUDE","tipo":"reservada","codigo":"100"},
+,{"nombre":"SELECT","tipo":"reservada","codigo":"100"},
+,{"nombre":"CHAR","tipo":"reservada","codigo":"100"},
+,{"nombre":"INDEX","tipo":"reservada","codigo":"100"},
+,{"nombre":"SESSION","tipo":"reservada","codigo":"100"},
+,{"nombre":"CHAR_LENGTH","tipo":"reservada","codigo":"100"},
+,{"nombre":"INDICATOR","tipo":"reservada","codigo":"100"},
+,{"nombre":"SESSION_USER","tipo":"reservada","codigo":"100"},
+,{"nombre":"CHARACTER","tipo":"reservada","codigo":"100"},
+,{"nombre":"INITIALLY","tipo":"reservada","codigo":"100"},
+,{"nombre":"SET","tipo":"reservada","codigo":"100"},
+,{"nombre":"CHARACTER_LENGTH","tipo":"reservada","codigo":"100"},
+,{"nombre":"INNER","tipo":"reservada","codigo":"100"}
+,{"nombre":"ABSOLUTE","tipo":"reservada","codigo":"100"},
+,{"nombre":"ADD","tipo":"reservada","codigo":"100"},
+,{"nombre":"ADMINDB","tipo":"reservada","codigo":"100"},
+,{"nombre":"ALL","tipo":"reservada","codigo":"100"},
+,{"nombre":"Alphanumeric","tipo":"reservada","codigo":"100"},
+,{"nombre":"ALTER","tipo":"reservada","codigo":"100"},
+,{"nombre":"ALTER TABLE","tipo":"reservada","codigo":"100"},
+,{"nombre":"And","tipo":"reservada","codigo":"100"},
+,{"nombre":"AS","tipo":"reservada","codigo":"100"},
+,{"nombre":"BEGIN","tipo":"reservada","codigo":"100"},
+,{"nombre":"Between","tipo":"reservada","codigo":"100"},
+,{"nombre":"BINARY","tipo":"reservada","codigo":"100"},
+,{"nombre":"BIT","tipo":"reservada","codigo":"100"},
+,{"nombre":"BIT_LENGTH","tipo":"reservada","codigo":"100"},
+,{"nombre":"BOOLEAN","tipo":"reservada","codigo":"100"},
+,{"nombre":"BOTH","tipo":"reservada","codigo":"100"},
+,{"nombre":"BY","tipo":"reservada","codigo":"100"},
+,{"nombre":"BYTE","tipo":"reservada","codigo":"100"},
+,{"nombre":"CASCADE","tipo":"reservada","codigo":"100"},
+,{"nombre":"CATALOG","tipo":"reservada","codigo":"100"},
+,{"nombre":"CHAR","tipo":"reservada","codigo":"100"},
+,{"nombre":"CHAR_LENGTH","tipo":"reservada","codigo":"100"},
+,{"nombre":"CHARACTER_LENGTH","tipo":"reservada","codigo":"100"},
+,{"nombre":"CHECK","tipo":"reservada","codigo":"100"},
+,{"nombre":"CLOSE","tipo":"reservada","codigo":"100"},
+,{"nombre":"CLUSTERED","tipo":"reservada","codigo":"100"},
+,{"nombre":"COALESCE","tipo":"reservada","codigo":"100"},
+,{"nombre":"COLLATE","tipo":"reservada","codigo":"100"},
+,{"nombre":"DATABASE","tipo":"reservada","codigo":"100"},
+,{"nombre":"DATE","tipo":"reservada","codigo":"100"},
+,{"nombre":"DATETIME","tipo":"reservada","codigo":"100"},
+,{"nombre":"DAY","tipo":"reservada","codigo":"100"},
+,{"nombre":"DEC, DECIMAL","tipo":"reservada","codigo":"100"},
+,{"nombre":"DECLARE","tipo":"reservada","codigo":"100"},
+,{"nombre":"DELETE","tipo":"reservada","codigo":"100"},
+,{"nombre":"DESC","tipo":"reservada","codigo":"100"},
+,{"nombre":"Eqv","tipo":"reservada","codigo":"100"},
+,{"nombre":"EXCLUSIVECONNECT","tipo":"reservada","codigo":"100"},
+,{"nombre":"EXEC, EXECUTE","tipo":"reservada","codigo":"100"},
+,{"nombre":"EXISTS","tipo":"reservada","codigo":"100"},
+,{"nombre":"EXTRACT","tipo":"reservada","codigo":"100"},
+,{"nombre":"FALSE","tipo":"reservada","codigo":"100"},
+,{"nombre":"FETCH","tipo":"reservada","codigo":"100"},
+,{"nombre":"FIRST","tipo":"reservada","codigo":"100"},
+,{"nombre":"FLOAT","tipo":"reservada","codigo":"100"},
+,{"nombre":"FLOAT4","tipo":"reservada","codigo":"100"},
+,{"nombre":"IDENTITY","tipo":"reservada","codigo":"100"},
+,{"nombre":"IEEEDOUBLE","tipo":"reservada","codigo":"100"},
+,{"nombre":"IEEESINGLE","tipo":"reservada","codigo":"100"},
+,{"nombre":"IGNORE","tipo":"reservada","codigo":"100"},
+,{"nombre":"IMAGE","tipo":"reservada","codigo":"100"},
+,{"nombre":"Imp","tipo":"reservada","codigo":"100"},
+,{"nombre":"In","tipo":"reservada","codigo":"100"},
+,{"nombre":"IN","tipo":"reservada","codigo":"100"},
+,{"nombre":"INDEX","tipo":"reservada","codigo":"100"},
+,{"nombre":"INDEXCREATEDB","tipo":"reservada","codigo":"100"},
+,{"nombre":"INNER","tipo":"reservada","codigo":"100"},
+,{"nombre":"JOIN","tipo":"reservada","codigo":"100"},
+,{"nombre":"KEY","tipo":"reservada","codigo":"100"},
+,{"nombre":"LANGUAGE","tipo":"reservada","codigo":"100"},
+,{"nombre":"LAST","tipo":"reservada","codigo":"100"},
+,{"nombre":"LEFT","tipo":"reservada","codigo":"100"},
+,{"nombre":"Level*","tipo":"reservada","codigo":"100"},
+,{"nombre":"Like","tipo":"reservada","codigo":"100"},
+,{"nombre":"LOGICAL","tipo":"reservada","codigo":"100"},
+,{"nombre":"LONG","tipo":"reservada","codigo":"100"},
+,{"nombre":"LONGBINARY","tipo":"reservada","codigo":"100"},
+,{"nombre":"LONGCHAR","tipo":"reservada","codigo":"100"},
+,{"nombre":"NATIONAL","tipo":"reservada","codigo":"100"},
+,{"nombre":"NCHAR","tipo":"reservada","codigo":"100"},
+,{"nombre":"NONCLUSTERED","tipo":"reservada","codigo":"100"},
+,{"nombre":"Not","tipo":"reservada","codigo":"100"},
+,{"nombre":"NTEXT","tipo":"reservada","codigo":"100"},
+,{"nombre":"NULL","tipo":"reservada","codigo":"100"},
+,{"nombre":"NUMBER","tipo":"reservada","codigo":"100"},
+,{"nombre":"NUMERIC","tipo":"reservada","codigo":"100"},
+,{"nombre":"NVARCHAR","tipo":"reservada","codigo":"100"},
+,{"nombre":"OCTET_LENGTH","tipo":"reservada","codigo":"100"},
+,{"nombre":"OLEOBJECT","tipo":"reservada","codigo":"100"},
+,{"nombre":"ON","tipo":"reservada","codigo":"100"},
+,{"nombre":"OPEN","tipo":"reservada","codigo":"100"},
+,{"nombre":"OPTION","tipo":"reservada","codigo":"100"},
+,{"nombre":"Or","tipo":"reservada","codigo":"100"},
+,{"nombre":"ORDER","tipo":"reservada","codigo":"100"},
+,{"nombre":"REAL","tipo":"reservada","codigo":"100"},
+,{"nombre":"REFERENCES","tipo":"reservada","codigo":"100"},
+,{"nombre":"RESTRICT","tipo":"reservada","codigo":"100"},
+,{"nombre":"REVOKE","tipo":"reservada","codigo":"100"},
+,{"nombre":"RIGHT","tipo":"reservada","codigo":"100"},
+,{"nombre":"ROLLBACK","tipo":"reservada","codigo":"100"},
+,{"nombre":"SCHEMA","tipo":"reservada","codigo":"100"},
+,{"nombre":"SECOND","tipo":"reservada","codigo":"100"},
+,{"nombre":"SELECT","tipo":"reservada","codigo":"100"},
+,{"nombre":"SELECTSCHEMA","tipo":"reservada","codigo":"100"},
+,{"nombre":"SELECTSECURITY","tipo":"reservada","codigo":"100"},
+,{"nombre":"SET","tipo":"reservada","codigo":"100"},
+,{"nombre":"SHORT","tipo":"reservada","codigo":"100"},
+,{"nombre":"SINGLE","tipo":"reservada","codigo":"100"},
+,{"nombre":"SIZE","tipo":"reservada","codigo":"100"},
+,{"nombre":"TABLE","tipo":"reservada","codigo":"100"},
+,{"nombre":"TableID","tipo":"reservada","codigo":"100"},
+,{"nombre":"TEMPORARY","tipo":"reservada","codigo":"100"},
+,{"nombre":"TEXT","tipo":"reservada","codigo":"100"},
+,{"nombre":"TIME","tipo":"reservada","codigo":"100"},
+,{"nombre":"TIMESTAMP","tipo":"reservada","codigo":"100"},
+,{"nombre":"TIMEZONE_HOUR","tipo":"reservada","codigo":"100"},
+,{"nombre":"TIMEZONE_MINUTE","tipo":"reservada","codigo":"100"},
+,{"nombre":"TINYINT","tipo":"reservada","codigo":"100"},
+,{"nombre":"TO","tipo":"reservada","codigo":"100"},
+,{"nombre":"TOP","tipo":"reservada","codigo":"100"},
+,{"nombre":"TRAILING","tipo":"reservada","codigo":"100"},
+,{"nombre":"TRANSACTION","tipo":"reservada","codigo":"100"},
+,{"nombre":"TRANSFORM","tipo":"reservada","codigo":"100"},
+,{"nombre":"TRANSLATE","tipo":"reservada","codigo":"100"},
+,{"nombre":"TRANSLATION","tipo":"reservada","codigo":"100"},
+,{"nombre":"TRIM","tipo":"reservada","codigo":"100"},
+,{"nombre":"TRUE","tipo":"reservada","codigo":"100"},
+,{"nombre":"UNION","tipo":"reservada","codigo":"100"},
+,{"nombre":"UNIQUE","tipo":"reservada","codigo":"100"},
+,{"nombre":"UNIQUEIDENTIFIER","tipo":"reservada","codigo":"100"},
+,{"nombre":"UNKNOWN","tipo":"reservada","codigo":"100"},
+,{"nombre":"UPDATE","tipo":"reservada","codigo":"100"},
+,{"nombre":"UPDATEIDENTITY","tipo":"reservada","codigo":"100"},
+,{"nombre":"ANY","tipo":"reservada","codigo":"100"},
+,{"nombre":"ARE","tipo":"reservada","codigo":"100"},
+,{"nombre":"AS","tipo":"reservada","codigo":"100"},
+,{"nombre":"ASC","tipo":"reservada","codigo":"100"},
+,{"nombre":"ASSERTION","tipo":"reservada","codigo":"100"},
+,{"nombre":"AUTHORIZATION","tipo":"reservada","codigo":"100"},
+,{"nombre":"AUTOINCREMENT","tipo":"reservada","codigo":"100"},
+,{"nombre":"Avg","tipo":"reservada","codigo":"100"},
+,{"nombre":"COLLATION","tipo":"reservada","codigo":"100"},
+,{"nombre":"COLUMN","tipo":"reservada","codigo":"100"},
+,{"nombre":"COMMIT","tipo":"reservada","codigo":"100"},
+,{"nombre":"COMP, COMPRESSION","tipo":"reservada","codigo":"100"},
+,{"nombre":"CONNECT","tipo":"reservada","codigo":"100"},
+,{"nombre":"CONNECTION","tipo":"reservada","codigo":"100"},
+,{"nombre":"CONSTRAINT, CONSTRAINTS","tipo":"reservada","codigo":"100"},
+,{"nombre":"CONTAINER","tipo":"reservada","codigo":"100"},
+,{"nombre":"CONTAINS","tipo":"reservada","codigo":"100"},
+,{"nombre":"CONVERT","tipo":"reservada","codigo":"100"},
+,{"nombre":"Count","tipo":"reservada","codigo":"100"},
+,{"nombre":"COUNTER","tipo":"reservada","codigo":"100"},
+,{"nombre":"CREATE","tipo":"reservada","codigo":"100"},
+,{"nombre":"CURRENCY","tipo":"reservada","codigo":"100"},
+,{"nombre":"CURRENT_DATE","tipo":"reservada","codigo":"100"},
+,{"nombre":"CURRENT_TIME","tipo":"reservada","codigo":"100"},
+,{"nombre":"CURRENT_TIMESTAMP","tipo":"reservada","codigo":"100"},
+,{"nombre":"CURRENT_USER","tipo":"reservada","codigo":"100"},
+,{"nombre":"CURSOR","tipo":"reservada","codigo":"100"},
+,{"nombre":"DISALLOW","tipo":"reservada","codigo":"100"},
+,{"nombre":"DISCONNECT","tipo":"reservada","codigo":"100"},
+,{"nombre":"DISTINCT","tipo":"reservada","codigo":"100"},
+,{"nombre":"DISTINCTROW","tipo":"reservada","codigo":"100"},
+,{"nombre":"DOMAIN","tipo":"reservada","codigo":"100"},
+,{"nombre":"DOUBLE","tipo":"reservada","codigo":"100"},
+,{"nombre":"DROP","tipo":"reservada","codigo":"100"},
+,{"nombre":"FOREIGN","tipo":"reservada","codigo":"100"},
+,{"nombre":"FROM","tipo":"reservada","codigo":"100"},
+,{"nombre":"Cláusula FROM","tipo":"reservada","codigo":"100"},
+,{"nombre":"GENERAL","tipo":"reservada","codigo":"100"},
+,{"nombre":"GRANT","tipo":"reservada","codigo":"100"},
+,{"nombre":"GROUP","tipo":"reservada","codigo":"100"},
+,{"nombre":"GUID","tipo":"reservada","codigo":"100"},
+,{"nombre":"HAVING","tipo":"reservada","codigo":"100"},
+,{"nombre":"HOUR","tipo":"reservada","codigo":"100"},
+,{"nombre":"INPUT","tipo":"reservada","codigo":"100"},
+,{"nombre":"INSENSITIVE","tipo":"reservada","codigo":"100"},
+,{"nombre":"INSERT","tipo":"reservada","codigo":"100"},
+,{"nombre":"INSERT INTO","tipo":"reservada","codigo":"100"},
+,{"nombre":"INT","tipo":"reservada","codigo":"100"},
+,{"nombre":"INTEGER1","tipo":"reservada","codigo":"100"},
+,{"nombre":"INTEGER2","tipo":"reservada","codigo":"100"},
+,{"nombre":"INTERVAL","tipo":"reservada","codigo":"100"},
+,{"nombre":"INTO","tipo":"reservada","codigo":"100"},
+,{"nombre":"Is","tipo":"reservada","codigo":"100"},
+,{"nombre":"ISOLATION","tipo":"reservada","codigo":"100"},
+,{"nombre":"LONGTEXT","tipo":"reservada","codigo":"100"},
+,{"nombre":"LOWER","tipo":"reservada","codigo":"100"},
+,{"nombre":"MATCH","tipo":"reservada","codigo":"100"},
+,{"nombre":"Max","tipo":"reservada","codigo":"100"},
+,{"nombre":"MEMO","tipo":"reservada","codigo":"100"},
+,{"nombre":"Min","tipo":"reservada","codigo":"100"},
+,{"nombre":"MINUTE","tipo":"reservada","codigo":"100"},
+,{"nombre":"Mod","tipo":"reservada","codigo":"100"},
+,{"nombre":"MONEY","tipo":"reservada","codigo":"100"},
+,{"nombre":"MONTH","tipo":"reservada","codigo":"100"},
+,{"nombre":"OUTPUT","tipo":"reservada","codigo":"100"},
+,{"nombre":"OWNERACCESS","tipo":"reservada","codigo":"100"},
+,{"nombre":"PAD","tipo":"reservada","codigo":"100"},
+,{"nombre":"PARAMETERS","tipo":"reservada","codigo":"100"},
+,{"nombre":"PARTIAL","tipo":"reservada","codigo":"100"},
+,{"nombre":"PASSWORD","tipo":"reservada","codigo":"100"},
+,{"nombre":"PERCENT","tipo":"reservada","codigo":"100"},
+,{"nombre":"PIVOT","tipo":"reservada","codigo":"100"},
+,{"nombre":"POSITION","tipo":"reservada","codigo":"100"},
+,{"nombre":"PRECISION","tipo":"reservada","codigo":"100"},
+,{"nombre":"PREPARE","tipo":"reservada","codigo":"100"},
+,{"nombre":"PRIMARY","tipo":"reservada","codigo":"100"},
+,{"nombre":"PRIVILEGES","tipo":"reservada","codigo":"100"},
+,{"nombre":"PROC, PROCEDURE","tipo":"reservada","codigo":"100"},
+,{"nombre":"PUBLIC","tipo":"reservada","codigo":"100"},
+,{"nombre":"SMALLDATETIME","tipo":"reservada","codigo":"100"},
+,{"nombre":"SMALLINT","tipo":"reservada","codigo":"100"},
+,{"nombre":"SMALLMONEY","tipo":"reservada","codigo":"100"},
+,{"nombre":"SOME","tipo":"reservada","codigo":"100"},
+,{"nombre":"SPACE","tipo":"reservada","codigo":"100"},
+,{"nombre":"SQL","tipo":"reservada","codigo":"100"},
+,{"nombre":"SQLCODE, SQLERROR, SQLSTATE","tipo":"reservada","codigo":"100"},
+,{"nombre":"StDev","tipo":"reservada","codigo":"100"},
+,{"nombre":"StDevP","tipo":"reservada","codigo":"100"},
+,{"nombre":"STRING","tipo":"reservada","codigo":"100"},
+,{"nombre":"SUBSTRING","tipo":"reservada","codigo":"100"},
+,{"nombre":"Sum","tipo":"reservada","codigo":"100"},
+,{"nombre":"SYSNAME","tipo":"reservada","codigo":"100"},
+,{"nombre":"SYSTEM_USER","tipo":"reservada","codigo":"100"},
+,{"nombre":"UPDATEOWNER","tipo":"reservada","codigo":"100"},
+,{"nombre":"UPDATESECURITY","tipo":"reservada","codigo":"100"},
+,{"nombre":"UPPER","tipo":"reservada","codigo":"100"},
+,{"nombre":"USAGE","tipo":"reservada","codigo":"100"},
+,{"nombre":"USER","tipo":"reservada","codigo":"100"},
+,{"nombre":"USING","tipo":"reservada","codigo":"100"},
+,{"nombre":"VALUE","tipo":"reservada","codigo":"100"},
+,{"nombre":"VALUES","tipo":"reservada","codigo":"100"},
+,{"nombre":"Var","tipo":"reservada","codigo":"100"},
+,{"nombre":"VARBINARY","tipo":"reservada","codigo":"100"},
+,{"nombre":"VARCHAR","tipo":"reservada","codigo":"100"},
+,{"nombre":"VarP","tipo":"reservada","codigo":"100"},
+,{"nombre":"VARYING","tipo":"reservada","codigo":"100"},
+,{"nombre":"VIEW","tipo":"reservada","codigo":"100"},
+,{"nombre":"WHEN","tipo":"reservada","codigo":"100"},
+,{"nombre":"WHENEVER","tipo":"reservada","codigo":"100"},
+,{"nombre":"WHERE","tipo":"reservada","codigo":"100"},
+,{"nombre":"WITH","tipo":"reservada","codigo":"100"},
+,{"nombre":"WORK","tipo":"reservada","codigo":"100"},
+,{"nombre":"Xor","tipo":"reservada","codigo":"100"},
+,{"nombre":"YEAR","tipo":"reservada","codigo":"100"},
+,{"nombre":"YESNO","tipo":"reservada","codigo":"100"},
+,{"nombre":"ZONE","tipo":"reservada","codigo":"100"},
+,{"nombre":"CHARACTER","tipo":"reservada","codigo":"100"},
+,{"nombre":"FLOAT8","tipo":"reservada","codigo":"100"},
+,{"nombre":"LOGICAL1","tipo":"reservada","codigo":"100"},
+,{"nombre":"INTEGER4","tipo":"reservada","codigo":"100"},
+,{"nombre":"INTEGER","tipo":"reservada","codigo":"100"},
+
+
+
 ];
 
 function borrar(){
@@ -480,13 +985,16 @@ function borrar(){
   $('#ocultarLexico').css('display', 'none');
   $('#ocularSintactico').css('display', 'none');
 
+  $('#compilaBien').css('display', 'none');
+  $('#compilaconError').css('display', 'none');
+  $('#NoCompila').css('display', 'none');
+
 
 }
 
 function analizar(){
 
-
-
+ 
 if (document.getElementById("inputcodigo").value==""){
   alert ("Por favor ingresar instruccion(es)");
   return;
@@ -497,6 +1005,13 @@ const str = document.getElementById("inputcodigo").value;
 
 
 if (str.includes(';')==false){
+  $('#ocultarLexico').css('display', 'none');
+  $('#ocularSintactico').css('display', 'none');
+
+  $('#compilaBien').css('display', 'none');
+  $('#compilaconError').css('display', 'none');
+  $('#NoCompila').css('display', 'none');
+
   alert ("Por favor debe separar cada instruccion mediante simbolo ( ; )");
   return;
 }
@@ -621,13 +1136,11 @@ let tokens = [];
 
     
       
-
-
   n=0;
   nointeracciones=[];
   t=1;
   let resultado2="";
-  mensaje=0;
+  mensaje=1;
 
     const $cuerpoTabla2 = document.querySelector("#cuerpoTabla2");
     
@@ -677,8 +1190,8 @@ while ((m = regex.exec(str1)) !== null) {
         console.log(`Found match, group ${groupIndex}: ${match}`);
 
         if (match!=undefined){
-            resultado2='sintaxis correcta'
-            mensaje++;
+            resultado2='Sintaxis Correcta'
+            
         }
     });
 }
@@ -687,7 +1200,10 @@ while ((m = regex.exec(str1)) !== null) {
       let $selectorOperacion = document.createElement("td");
       $selectorOperacion.textContent =resultado2;
       $tr.appendChild($selectorOperacion);
-  
+
+      if (resultado2=='Sintaxis Correcta'){
+        mensaje++;
+      }
       
       $cuerpoTabla2.appendChild($tr);
 
@@ -699,12 +1215,26 @@ while ((m = regex.exec(str1)) !== null) {
       });
 
 
+  $('#compilaBien').css('display', 'none');
+  $('#compilaconError').css('display', 'none');
+  $('#NoCompila').css('display', 'none');
+
+
+  if (mensaje==(t)){
+    $('#compilaBien').css('display', 'block');
+  };
+  if (mensaje==1){
+    $('#NoCompila').css('display', 'block');
+  };
+  if (mensaje>1 && mensaje<t){
+    $('#compilaconError').css('display', 'block');
+  };
+
+              
 
 
 
 
-
-// mensaje
 
 
 
@@ -727,7 +1257,7 @@ while ((m = regex.exec(str1)) !== null) {
         <tr>
           <th class="h6 col-2" scope="col">Instruccion</th>
           <th class="h6 col-6" scope="col">Sintaxis</th>
-          <th class="h6 col-4"scope="col">Manejador Error</th>
+          <th class="h6 col-4"scope="col">Estado</th>
         </tr>
       </thead>
       <tbody id="cuerpoTabla2"></tbody>
